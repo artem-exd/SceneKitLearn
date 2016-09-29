@@ -11,8 +11,17 @@
 		ACDAFAC31D9DA1E10057569E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDAFAC21D9DA1E10057569E /* art.scnassets */; };
 		ACDAFAC51D9DA1E10057569E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFAC41D9DA1E10057569E /* GameViewController.swift */; };
 		ACDAFAC81D9DA1E10057569E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACDAFAC61D9DA1E10057569E /* Main.storyboard */; };
-		ACDAFACA1D9DA1E10057569E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDAFAC91D9DA1E10057569E /* Assets.xcassets */; };
 		ACDAFACD1D9DA1E10057569E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACDAFACB1D9DA1E10057569E /* LaunchScreen.storyboard */; };
+		ACDAFAD51D9DA5120057569E /* GeometryFighter.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDAFAD41D9DA5120057569E /* GeometryFighter.scnassets */; };
+		ACDAFAD71D9DA5930057569E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDAFAD61D9DA5930057569E /* Assets.xcassets */; };
+		ACDAFADB1D9DA97A0057569E /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFADA1D9DA97A0057569E /* ShapeType.swift */; };
+		ACDAFAE41D9DAFD50057569E /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFADD1D9DAFD50057569E /* Double+Extensions.swift */; };
+		ACDAFAE51D9DAFD50057569E /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFADE1D9DAFD50057569E /* Float+Extensions.swift */; };
+		ACDAFAE61D9DAFD50057569E /* GameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFADF1D9DAFD50057569E /* GameHelper.swift */; };
+		ACDAFAE71D9DAFD50057569E /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFAE01D9DAFD50057569E /* Generics.swift */; };
+		ACDAFAE81D9DAFD50057569E /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFAE11D9DAFD50057569E /* Int+Extensions.swift */; };
+		ACDAFAE91D9DAFD50057569E /* SCNAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFAE21D9DAFD50057569E /* SCNAction+Extensions.swift */; };
+		ACDAFAEA1D9DAFD50057569E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFAE31D9DAFD50057569E /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +30,18 @@
 		ACDAFAC21D9DA1E10057569E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		ACDAFAC41D9DA1E10057569E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		ACDAFAC71D9DA1E10057569E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ACDAFAC91D9DA1E10057569E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACDAFACC1D9DA1E10057569E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACDAFACE1D9DA1E10057569E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACDAFAD41D9DA5120057569E /* GeometryFighter.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = GeometryFighter.scnassets; sourceTree = "<group>"; };
+		ACDAFAD61D9DA5930057569E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ACDAFADA1D9DA97A0057569E /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
+		ACDAFADD1D9DAFD50057569E /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		ACDAFADE1D9DAFD50057569E /* Float+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		ACDAFADF1D9DAFD50057569E /* GameHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHelper.swift; sourceTree = "<group>"; };
+		ACDAFAE01D9DAFD50057569E /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		ACDAFAE11D9DAFD50057569E /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		ACDAFAE21D9DAFD50057569E /* SCNAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNAction+Extensions.swift"; sourceTree = "<group>"; };
+		ACDAFAE31D9DAFD50057569E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +75,31 @@
 			isa = PBXGroup;
 			children = (
 				ACDAFAC01D9DA1E10057569E /* AppDelegate.swift */,
+				ACDAFADC1D9DAFD50057569E /* GameUtils */,
 				ACDAFAC21D9DA1E10057569E /* art.scnassets */,
 				ACDAFAC41D9DA1E10057569E /* GameViewController.swift */,
+				ACDAFADA1D9DA97A0057569E /* ShapeType.swift */,
+				ACDAFAD41D9DA5120057569E /* GeometryFighter.scnassets */,
 				ACDAFAC61D9DA1E10057569E /* Main.storyboard */,
-				ACDAFAC91D9DA1E10057569E /* Assets.xcassets */,
 				ACDAFACB1D9DA1E10057569E /* LaunchScreen.storyboard */,
+				ACDAFAD61D9DA5930057569E /* Assets.xcassets */,
 				ACDAFACE1D9DA1E10057569E /* Info.plist */,
 			);
 			path = SceneKitLearn;
+			sourceTree = "<group>";
+		};
+		ACDAFADC1D9DAFD50057569E /* GameUtils */ = {
+			isa = PBXGroup;
+			children = (
+				ACDAFADD1D9DAFD50057569E /* Double+Extensions.swift */,
+				ACDAFADE1D9DAFD50057569E /* Float+Extensions.swift */,
+				ACDAFADF1D9DAFD50057569E /* GameHelper.swift */,
+				ACDAFAE01D9DAFD50057569E /* Generics.swift */,
+				ACDAFAE11D9DAFD50057569E /* Int+Extensions.swift */,
+				ACDAFAE21D9DAFD50057569E /* SCNAction+Extensions.swift */,
+				ACDAFAE31D9DAFD50057569E /* UIColor+Extensions.swift */,
+			);
+			path = GameUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +135,7 @@
 					ACDAFABC1D9DA1E10057569E = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = M44UMT925Z;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -129,8 +165,9 @@
 			files = (
 				ACDAFAC31D9DA1E10057569E /* art.scnassets in Resources */,
 				ACDAFACD1D9DA1E10057569E /* LaunchScreen.storyboard in Resources */,
-				ACDAFACA1D9DA1E10057569E /* Assets.xcassets in Resources */,
 				ACDAFAC81D9DA1E10057569E /* Main.storyboard in Resources */,
+				ACDAFAD51D9DA5120057569E /* GeometryFighter.scnassets in Resources */,
+				ACDAFAD71D9DA5930057569E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +178,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDAFAE51D9DAFD50057569E /* Float+Extensions.swift in Sources */,
+				ACDAFAEA1D9DAFD50057569E /* UIColor+Extensions.swift in Sources */,
+				ACDAFAE41D9DAFD50057569E /* Double+Extensions.swift in Sources */,
+				ACDAFAE91D9DAFD50057569E /* SCNAction+Extensions.swift in Sources */,
+				ACDAFAE71D9DAFD50057569E /* Generics.swift in Sources */,
 				ACDAFAC51D9DA1E10057569E /* GameViewController.swift in Sources */,
+				ACDAFADB1D9DA97A0057569E /* ShapeType.swift in Sources */,
+				ACDAFAE81D9DAFD50057569E /* Int+Extensions.swift in Sources */,
 				ACDAFAC11D9DA1E10057569E /* AppDelegate.swift in Sources */,
+				ACDAFAE61D9DAFD50057569E /* GameHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
