@@ -11,22 +11,27 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController, SCNSceneRendererDelegate {
+    override var shouldAutorotate: Bool { return true }
+    override var prefersStatusBarHidden: Bool {return true}
     
     @IBOutlet var sceneView: SCNView!
     let scene = SCNScene()
     let cameraNode = SCNNode()
     let shape = RundomShapeNodeGenerator()
     var renderContolTime: TimeInterval = 0
+    
+    var game = GameHelper.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setScene()
         setCamera()
         renderShape()
+        setupHUD()
     }
     
     fileprivate func setScene() {
-        sceneView.allowsCameraControl = true
+        //sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.showsStatistics = true
         sceneView.delegate = self
@@ -48,15 +53,33 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
             node.removeFromParentNode()
         }
     }
-    
-    override var shouldAutorotate: Bool {
-        return true
+    fileprivate func setupHUD() {
+        game.hudNode.position = SCNVector3(x: 0.0, y: 10.0, z: 0.0)
+        scene.rootNode.addChildNode(game.hudNode)
     }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
+    fileprivate func handleTouch(node: SCNNode) {
+        if node.name == "GOOD" {
+            game.score += 1
+            createExplosion(node: node)
+            node.removeFromParentNode()
+        } else if node.name == "BAD" {
+            game.score -= 1
+            createExplosion(node: node)
+            node.removeFromParentNode()
+        }
     }
-    
+    func createExplosion(node:SCNNode) {
+        let explosion = SCNParticleSystem(named: "Explode.scnp", inDirectory:nil)!
+        explosion.emitterShape = node.geometry
+        explosion.birthLocation = .surface
+        
+        let rotation = node.presentation.rotation
+        let position = node.presentation.position
+        let rotationMatrix = SCNMatrix4MakeRotation(rotation.w, rotation.x, rotation.y, rotation.z)
+        let translationMatrix = SCNMatrix4MakeTranslation(position.x, position.y, position.z)
+        let transformMatrix = SCNMatrix4Mult(rotationMatrix, translationMatrix)
+        scene.addParticleSystem(explosion, transform: transformMatrix)
+    }
     
     //MARK: - SCNSceneRendererDelegate
     
@@ -66,5 +89,20 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
             renderContolTime = time + TimeInterval(Float.random(min: 0.2, max: 1.5))
         }
         removeShape()
+        game.updateHUD()
+    }
+    
+    
+    //MARK: - Touches
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        guard let touch = touches.first else {return}
+        let location = touch.location(in: sceneView)
+        let hitResult = sceneView.hitTest(location, options: nil)
+        if hitResult.count > 0 {
+            let result = hitResult.first!
+            handleTouch(node: result.node)
+        }
     }
 }

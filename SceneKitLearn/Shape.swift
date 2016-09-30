@@ -48,9 +48,19 @@ open class RundomShapeNodeGenerator {
         case .tube:
             geometry = SCNTube(innerRadius: 0.25, outerRadius: 0.5, height: 1.0)
         }
-        geometry.materials.first?.diffuse.contents = UIColor.random()
+        
+        //fill shape
+        let rundomColor = UIColor.random()
+        geometry.materials.first?.diffuse.contents = rundomColor
+        
         
         let geometryNode = SCNNode(geometry: geometry)
+        
+        //add effects on shape node
+        let emmiter = createParticleEffect(color: rundomColor, geometry: geometry)
+        geometryNode.addParticleSystem(emmiter)
+        
+        //add phisics on shape node
         geometryNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         
         let randomX = Float.random(min: -2, max: 2)
@@ -59,7 +69,21 @@ open class RundomShapeNodeGenerator {
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         geometryNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
         
+        
+        //add id to shape node
+        if rundomColor == UIColor.black {
+            geometryNode.name = "BAD"
+        } else {
+            geometryNode.name = "GOOD"
+        }
+        
         return geometryNode
     }
     
+    fileprivate func createParticleEffect(color: UIColor, geometry: SCNGeometry) -> SCNParticleSystem {
+        let particle = SCNParticleSystem(named: "Trail", inDirectory: nil)!
+        particle.particleColor = color
+        particle.emitterShape = geometry
+        return particle
+    }
 }
