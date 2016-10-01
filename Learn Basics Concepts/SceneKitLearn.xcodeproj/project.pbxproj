@@ -61,6 +61,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC8C59801D9FEDF0007CFC55 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				ACDAFAC21D9DA1E10057569E /* art.scnassets */,
+				ACDAFAD41D9DA5120057569E /* GeometryFighter.scnassets */,
+				ACDAFAD61D9DA5930057569E /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		AC8C59811D9FEDFC007CFC55 /* Stroryboards */ = {
+			isa = PBXGroup;
+			children = (
+				ACDAFAC61D9DA1E10057569E /* Main.storyboard */,
+				ACDAFACB1D9DA1E10057569E /* LaunchScreen.storyboard */,
+			);
+			name = Stroryboards;
+			sourceTree = "<group>";
+		};
+		AC8C59821D9FEF03007CFC55 /* App Logic */ = {
+			isa = PBXGroup;
+			children = (
+				ACDAFAC01D9DA1E10057569E /* AppDelegate.swift */,
+				ACDAFAC41D9DA1E10057569E /* GameViewController.swift */,
+				ACDAFADA1D9DA97A0057569E /* Shape.swift */,
+			);
+			name = "App Logic";
+			sourceTree = "<group>";
+		};
 		ACDAFAB41D9DA1E10057569E = {
 			isa = PBXGroup;
 			children = (
@@ -80,16 +109,11 @@
 		ACDAFABF1D9DA1E10057569E /* SceneKitLearn */ = {
 			isa = PBXGroup;
 			children = (
-				ACDAFAC01D9DA1E10057569E /* AppDelegate.swift */,
 				ACDAFADC1D9DAFD50057569E /* GameUtils */,
-				ACDAFAC21D9DA1E10057569E /* art.scnassets */,
-				ACDAFAC41D9DA1E10057569E /* GameViewController.swift */,
-				ACDAFADA1D9DA97A0057569E /* Shape.swift */,
+				AC8C59821D9FEF03007CFC55 /* App Logic */,
 				ACFD44651D9EEF1B00975BA5 /* Particle */,
-				ACDAFAD41D9DA5120057569E /* GeometryFighter.scnassets */,
-				ACDAFAC61D9DA1E10057569E /* Main.storyboard */,
-				ACDAFACB1D9DA1E10057569E /* LaunchScreen.storyboard */,
-				ACDAFAD61D9DA5930057569E /* Assets.xcassets */,
+				AC8C59801D9FEDF0007CFC55 /* Assets */,
+				AC8C59811D9FEDFC007CFC55 /* Stroryboards */,
 				ACDAFACE1D9DA1E10057569E /* Info.plist */,
 			);
 			path = SceneKitLearn;

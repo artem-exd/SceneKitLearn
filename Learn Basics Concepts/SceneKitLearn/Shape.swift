@@ -8,7 +8,7 @@
 
 import SceneKit
 
-public enum ShapeType: Int {
+fileprivate enum ShapeType: Int {
     case box = 0
     case sphere
     case pyramid

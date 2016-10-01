@@ -20,7 +20,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     let shape = RundomShapeNodeGenerator()
     var renderContolTime: TimeInterval = 0
     
-    var game = GameHelper.sharedInstance
+    let gameHelper = GameHelper.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,16 +54,16 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         }
     }
     fileprivate func setupHUD() {
-        game.hudNode.position = SCNVector3(x: 0.0, y: 10.0, z: 0.0)
-        scene.rootNode.addChildNode(game.hudNode)
+        gameHelper.hudNode.position = SCNVector3(x: 0.0, y: 10.0, z: 0.0)
+        scene.rootNode.addChildNode(gameHelper.hudNode)
     }
     fileprivate func handleTouch(node: SCNNode) {
         if node.name == "GOOD" {
-            game.score += 1
+            gameHelper.score += 1
             createExplosion(node: node)
             node.removeFromParentNode()
         } else if node.name == "BAD" {
-            game.score -= 1
+            gameHelper.score -= 1
             createExplosion(node: node)
             node.removeFromParentNode()
         }
@@ -89,7 +89,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
             renderContolTime = time + TimeInterval(Float.random(min: 0.2, max: 1.5))
         }
         removeShape()
-        game.updateHUD()
+        gameHelper.updateHUD()
     }
     
     
