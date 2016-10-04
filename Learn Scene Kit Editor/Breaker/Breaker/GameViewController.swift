@@ -22,6 +22,7 @@ class GameViewController: UIViewController {
     var ballNode: SCNNode!
     var paddleNode: SCNNode!
     var lastContactNode: SCNNode!
+    var floorNode: SCNNode!
     
     var touchX: CGFloat = 0
     var paddleX: Float = 0
@@ -46,6 +47,10 @@ class GameViewController: UIViewController {
         verticalCamera = scene.rootNode.childNode(withName: "VerticalCamera", recursively: true)!
         ballNode = scene.rootNode.childNode(withName: "Ball", recursively: true)!
         paddleNode = scene.rootNode.childNode(withName: "Paddle", recursively: true)!
+        floorNode = scene.rootNode.childNode(withName: "Floor", recursively: true)!
+        
+        verticalCamera.constraints = [SCNLookAtConstraint(target:floorNode)]
+        horizontalCamera.constraints = [SCNLookAtConstraint(target:floorNode)]
         
         //add physics
         ballNode.physicsBody?.contactTestBitMask  = ColiderType.Barrier.rawValue | ColiderType.Brick.rawValue | ColiderType.Paddle.rawValue
@@ -82,6 +87,9 @@ class GameViewController: UIViewController {
                 paddleNode.position.x = -4.5
             }
         }
+        
+        verticalCamera.position.x = paddleNode.position.x
+        horizontalCamera.position.x = paddleNode.position.x
     }
 }
 
