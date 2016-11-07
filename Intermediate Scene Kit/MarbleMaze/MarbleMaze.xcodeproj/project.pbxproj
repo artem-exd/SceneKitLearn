@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACB1B6DD1DD11DB9004BADAE /* obj_ball.scn in Resources */ = {isa = PBXBuildFile; fileRef = ACB1B6DC1DD11DB9004BADAE /* obj_ball.scn */; };
 		ACFE75B21DD107D70002FF76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE75B11DD107D70002FF76 /* AppDelegate.swift */; };
 		ACFE75B61DD107D70002FF76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE75B51DD107D70002FF76 /* GameViewController.swift */; };
 		ACFE75B91DD107D70002FF76 /* GameScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFE75B71DD107D70002FF76 /* GameScreen.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ACB1B6DC1DD11DB9004BADAE /* obj_ball.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = obj_ball.scn; sourceTree = "<group>"; };
 		ACFE75AE1DD107D70002FF76 /* MarbleMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFE75B11DD107D70002FF76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFE75B51DD107D70002FF76 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				ACFE75CA1DD10B650002FF76 /* GameCore.swift */,
 				ACFE75C81DD10AAB0002FF76 /* GameView.swift */,
 				ACFE75B71DD107D70002FF76 /* GameScreen.storyboard */,
+				ACB1B6DC1DD11DB9004BADAE /* obj_ball.scn */,
 			);
 			name = GameSceen;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB1B6DD1DD11DB9004BADAE /* obj_ball.scn in Resources */,
 				ACFE75BE1DD107D70002FF76 /* LaunchScreen.storyboard in Resources */,
 				ACFE75C61DD107F20002FF76 /* art.scnassets in Resources */,
 				ACFE75BB1DD107D70002FF76 /* Assets.xcassets in Resources */,
