@@ -18,7 +18,7 @@ final class GameViewController: UIViewController {
         return true
     }
     
-    var scene: SCNScene!
+    var scene: GameScene!
     @IBOutlet weak var gameView: GameView!
     var gameCore: GameCore!
     
@@ -28,8 +28,9 @@ final class GameViewController: UIViewController {
     }
     private func setupScene() {
         gameCore = GameCore()
-        scene = SCNScene(named: "art.scnassets/game.scn")
+        scene = GameScene(named: "art.scnassets/game.scn")
         gameView.delegate = gameCore
         gameView.scene = scene
+        scene.physicsWorld.contactDelegate = gameCore
     }
 }
