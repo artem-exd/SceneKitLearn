@@ -11,7 +11,6 @@
 		ACD218621DD2312800AD6242 /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2185E1DD2312800AD6242 /* GameUtils.swift */; };
 		ACD218631DD2312800AD6242 /* SCNAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2185F1DD2312800AD6242 /* SCNAction+Extensions.swift */; };
 		ACD218641DD2312800AD6242 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD218601DD2312800AD6242 /* SCNVector3+Extensions.swift */; };
-		ACD218661DD236F300AD6242 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD218651DD236F300AD6242 /* GameScene.swift */; };
 		ACFE75B21DD107D70002FF76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE75B11DD107D70002FF76 /* AppDelegate.swift */; };
 		ACFE75B61DD107D70002FF76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE75B51DD107D70002FF76 /* GameViewController.swift */; };
 		ACFE75B91DD107D70002FF76 /* GameScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFE75B71DD107D70002FF76 /* GameScreen.storyboard */; };
@@ -27,7 +26,6 @@
 		ACD2185E1DD2312800AD6242 /* GameUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
 		ACD2185F1DD2312800AD6242 /* SCNAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNAction+Extensions.swift"; sourceTree = "<group>"; };
 		ACD218601DD2312800AD6242 /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
-		ACD218651DD236F300AD6242 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		ACFE75AE1DD107D70002FF76 /* MarbleMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFE75B11DD107D70002FF76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFE75B51DD107D70002FF76 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				ACFE75B51DD107D70002FF76 /* GameViewController.swift */,
-				ACD218651DD236F300AD6242 /* GameScene.swift */,
 				ACFE75CA1DD10B650002FF76 /* GameCore.swift */,
 				ACFE75C81DD10AAB0002FF76 /* GameView.swift */,
 				ACFE75B71DD107D70002FF76 /* GameScreen.storyboard */,
@@ -181,7 +178,6 @@
 				ACD218611DD2312800AD6242 /* GameHelper.swift in Sources */,
 				ACD218621DD2312800AD6242 /* GameUtils.swift in Sources */,
 				ACFE75CB1DD10B650002FF76 /* GameCore.swift in Sources */,
-				ACD218661DD236F300AD6242 /* GameScene.swift in Sources */,
 				ACD218641DD2312800AD6242 /* SCNVector3+Extensions.swift in Sources */,
 				ACFE75B61DD107D70002FF76 /* GameViewController.swift in Sources */,
 				ACD218631DD2312800AD6242 /* SCNAction+Extensions.swift in Sources */,
@@ -311,7 +307,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F239PGHZ78;
 				INFOPLIST_FILE = MarbleMaze/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtemSherbachuk.MarbleMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -325,7 +321,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F239PGHZ78;
 				INFOPLIST_FILE = MarbleMaze/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtemSherbachuk.MarbleMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -18,19 +18,24 @@ final class GameViewController: UIViewController {
         return true
     }
     
-    var scene: GameScene!
     @IBOutlet weak var gameView: GameView!
-    var gameCore: GameCore!
+    private(set) var scene: SCNScene!
+    private(set) var ballNode: SCNNode!
+    private(set)var gameCore: GameCore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScene()
+        setupNodes()
     }
     private func setupScene() {
         gameCore = GameCore()
-        scene = GameScene(named: "art.scnassets/game.scn")
+        scene = SCNScene(named: "art.scnassets/game.scn")
         gameView.delegate = gameCore
         gameView.scene = scene
         scene.physicsWorld.contactDelegate = gameCore
+    }
+    private func setupNodes() {
+        ballNode = scene.rootNode.childNode(withName: "ball", recursively: true)!
     }
 }

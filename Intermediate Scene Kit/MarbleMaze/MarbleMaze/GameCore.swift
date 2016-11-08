@@ -7,6 +7,7 @@
 //
 import SceneKit
 
+
 enum PhysicsMask: Int {
     case ball = 1
     case stone = 2
@@ -31,20 +32,22 @@ enum PhysicsMask: Int {
         switch self {
         case .ball:
             return PhysicsMask.pillar.rawValue | PhysicsMask.crate.rawValue | PhysicsMask.stone.rawValue
+        case .pearl:
+            return -1
         default:
             return 1
         }
     }
 }
 
+
 final class GameCore: NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        let contactedNode = contact.nodeA.name == "ball" ? contact.nodeB : contact.nodeA
+        let contactedNode = contact.nodeA.name == "ball" ? contact.nodeA : contact.nodeB
         
         if isPearlContacted(contactedNode) {
             contactedNode.isHidden = true
