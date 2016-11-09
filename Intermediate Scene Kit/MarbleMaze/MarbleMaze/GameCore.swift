@@ -40,10 +40,25 @@ enum PhysicsMask: Int {
     }
 }
 
+enum GameStateType {
+    case playing
+    case tapToPlay
+    case gameOver
+}
+
+
+protocol GameCoreDelegate: class {
+    func updateRenderAt(time: TimeInterval)
+}
 
 final class GameCore: NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate {
     
+    weak var delegate: GameCoreDelegate?
+    
+    var state = GameStateType.tapToPlay
+    
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        delegate?.updateRenderAt(time: time)
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
@@ -61,10 +76,10 @@ final class GameCore: NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDeleg
         }
     }
     
-    private func isPearlContacted(_ contactedNode: SCNNode) -> Bool {
+    fileprivate func isPearlContacted(_ contactedNode: SCNNode) -> Bool {
         return contactedNode.physicsBody?.categoryBitMask == PhysicsMask.pearl.categoryMask()
     }
-    private func isBarrierContacted(_ contactedNode: SCNNode) -> Bool {
+    fileprivate func isBarrierContacted(_ contactedNode: SCNNode) -> Bool {
         return contactedNode.physicsBody?.categoryBitMask == PhysicsMask.pillar.categoryMask() ||
         contactedNode.physicsBody?.categoryBitMask == PhysicsMask.crate.categoryMask()
     }

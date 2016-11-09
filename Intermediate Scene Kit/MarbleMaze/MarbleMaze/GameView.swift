@@ -9,15 +9,10 @@
 import SceneKit
 
 final class GameView: SCNView {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.allowsCameraControl = true
+        //self.allowsCameraControl = true
         self.showsStatistics = true
     }
-    
-    func setupNodes() {
-        
-    }
-
 }
