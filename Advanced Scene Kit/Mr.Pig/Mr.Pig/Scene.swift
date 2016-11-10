@@ -16,11 +16,14 @@ final class Scene {
     let introScene: SCNScene!
     let statusBar: StatusBar!
     
-    let mainCharacterNode: SCNNode!
+    let mainCharacter: MainCharacter!
     let camera: SCNNode!
     let cameraFollowNode: SCNNode
     let lightFollowNode: SCNNode!
     let trafficNode: SCNNode!
+    
+    let driveLeftAction: SCNAction!
+    let driveRightAction: SCNAction!
     
     init(view: SCNView) {
         self.view = view
@@ -30,17 +33,23 @@ final class Scene {
         
         statusBar = StatusBar(coinsBanked: 0, coinsCollected: 0)
         
-        mainCharacterNode = gameScene.rootNode.childNode(withName: "MrPig", recursively: true)!
+        mainCharacter = MainCharacter(rootNode: gameScene.rootNode.childNode(withName: "MrPig", recursively: true)!)
+        mainCharacter.setViewForGestureRecognizers(view: view)
+        
         camera = gameScene.rootNode.childNode(withName: "camera", recursively: true)!
         camera.addChildNode(statusBar.rootNode)
         cameraFollowNode = gameScene.rootNode.childNode(withName: "FollowCamera", recursively: true)!
         lightFollowNode = gameScene.rootNode.childNode(withName: "FollowLight", recursively: true)!
         trafficNode = gameScene.rootNode.childNode(withName: "Traffic", recursively: true)!
+        
+        driveLeftAction = SCNAction.repeatForever(SCNAction.moveBy(x: -2, y: 0, z: 0, duration: 1))
+        driveRightAction = SCNAction.repeatForever(SCNAction.moveBy(x: 2, y: 0, z: 0, duration: 1))
     }
 
     
     func startGame() {
         sceneTransition(fromScene: introScene, toScene: gameScene)
+        startMovingTraffic()
     }
     
     func introStart() {
@@ -49,9 +58,20 @@ final class Scene {
     
     private func sceneTransition(fromScene: SCNScene, toScene: SCNScene) {
         fromScene.isPaused = true
-        let transition = SKTransition.push(with: .up, duration: 0.7)//SKTransition.doorsOpenVertical(withDuration: 1)
+        let transition = SKTransition.push(with: .down, duration: 1)
         view.present(toScene, with: transition, incomingPointOfView: nil) { _ in
             toScene.isPaused = false
+        }
+    }
+    
+    private func startMovingTraffic() {
+        trafficNode.childNodes.forEach { car in
+            let isBus = car.name == "Bus"
+            driveLeftAction.speed = isBus ? 1 : 2
+            driveRightAction.speed = isBus ? 1 : 2
+            
+            let isCarRidingLeft = car.eulerAngles.y > 0
+            car.runAction(isCarRidingLeft ? driveLeftAction : driveRightAction)
         }
     }
 }

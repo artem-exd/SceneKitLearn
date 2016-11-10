@@ -1,0 +1,73 @@
+//
+//  MainCharacter.swift
+//  Mr.Pig
+//
+//  Created by Artem Sherbachuk (UKRAINE) artemsherbachuk@gmail.com on 11/10/16.
+//  Copyright © 2016 ArtemSherbachuk. All rights reserved.
+//
+
+import SceneKit
+
+final class MainCharacter {
+    
+    let rootNode: SCNNode!
+    
+    let jumpLeftAction: SCNAction!
+    let jumRightAction: SCNAction!
+    let jumpForwardAction: SCNAction!
+    let jumpBackwardAction: SCNAction!
+    private let actionDuration = 0.2
+    
+    init(rootNode: SCNNode) {
+        self.rootNode = rootNode
+        
+        //Actions setup
+        let bounceUp = SCNAction.moveBy(x: 0, y: 1.0, z: 0, duration: actionDuration*0.5)
+        bounceUp.timingMode = .easeOut
+        let bounceDown = SCNAction.moveBy(x: 0, y: -1.0, z: 0, duration: actionDuration*0.5)
+        bounceDown.timingMode = .easeIn
+        let bounceActions = SCNAction.sequence([bounceUp, bounceDown])
+        
+        let moveLeft = SCNAction.moveBy(x: -1.0, y: 0, z: 0, duration: actionDuration)
+        let moveRight = SCNAction.moveBy(x: 1.0, y: 0, z: 0, duration: actionDuration)
+        let moveForward = SCNAction.moveBy(x: 0, y: 0, z: -1.0, duration: actionDuration)
+        let moveBackward = SCNAction.moveBy(x: 0, y: 0, z: 1.0, duration: actionDuration)
+        
+        let turnLeft = SCNAction.rotateTo(x: 0, y: convertToRadians(-90), z: 0, duration: actionDuration, usesShortestUnitArc: true)
+        let turnRight = SCNAction.rotateTo(x: 0, y: convertToRadians(90), z: 0, duration: actionDuration, usesShortestUnitArc: true)
+        let turnForward = SCNAction.rotateTo(x: 0, y: convertToRadians(180), z: 0, duration: actionDuration, usesShortestUnitArc: true)
+        let turnBackward = SCNAction.rotateTo(x: 0, y: convertToRadians(360), z: 0, duration: actionDuration, usesShortestUnitArc: true)
+        
+        jumpLeftAction = SCNAction.group([turnLeft, bounceActions, moveLeft])
+        jumRightAction = SCNAction.group([turnRight, bounceActions, moveRight])
+        jumpForwardAction = SCNAction.group([turnForward, bounceActions, moveForward])
+        jumpBackwardAction = SCNAction.group([turnBackward, bounceActions, moveBackward])
+    }
+    
+    func setViewForGestureRecognizers(view: SCNView) {
+        func addGesture(direction: UISwipeGestureRecognizerDirection) {
+            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(hanldeGesture(gesture:)))
+            gesture.direction = direction
+            view.addGestureRecognizer(gesture)
+        }
+        addGesture(direction: .left)
+        addGesture(direction: .right)
+        addGesture(direction: .up)
+        addGesture(direction: .down)
+    }
+    
+    @objc private func hanldeGesture(gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case UISwipeGestureRecognizerDirection.left:
+            rootNode.runAction(jumpLeftAction)
+        case UISwipeGestureRecognizerDirection.right:
+            rootNode.runAction(jumRightAction)
+        case UISwipeGestureRecognizerDirection.up:
+            rootNode.runAction(jumpForwardAction)
+        case UISwipeGestureRecognizerDirection.down:
+            rootNode.runAction(jumpBackwardAction)
+        default:
+            break
+        }
+    }
+}

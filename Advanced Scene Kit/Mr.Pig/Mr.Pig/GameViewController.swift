@@ -18,9 +18,6 @@ final class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScenes()
-        setupNodes()
-        setupActions()
-        setupTraffic()
         setupGestures()
         setupSounds()
         gameCore = GameCore()
@@ -30,12 +27,6 @@ final class GameViewController: UIViewController {
     func setupScenes() {
         gameView.backgroundColor = .yellow
         scene = Scene(view:gameView)
-    }
-    func setupNodes() {
-    }
-    func setupActions() {
-    }
-    func setupTraffic() {
     }
     func setupGestures() {
     }
