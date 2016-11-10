@@ -35,10 +35,11 @@ final class GameScene {
     func playGame() {
         cameraFollowNode.eulerAngles.y = 0
         cameraFollowNode.position = SCNVector3Zero
+        replanishLife()
     }
     
     func resetGame() {
-        GameHelper.sharedInstance.playSound(ballNode, name: "Reset")
+        //GameHelper.sharedInstance.playSound(ballNode, name: "Reset")
         ballNode.physicsBody!.velocity = SCNVector3Zero
         ballNode.position = SCNVector3(x:0, y:10, z:0)
         cameraFollowNode.position = ballNode.position
@@ -60,6 +61,26 @@ final class GameScene {
         lightFollowNode.position = cameraFollowNode.position
         if state == .tapToPlay {
             cameraFollowNode.eulerAngles.y += 0.005
+        }
+    }
+    
+    func replanishLife() {
+        let firstMaterial = ballNode.geometry!.firstMaterial!
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.0
+        firstMaterial.emission.intensity = 1.0
+        SCNTransaction.commit()
+        
+        GameHelper.sharedInstance.score += 1
+        GameHelper.sharedInstance.playSound(ballNode, name: "Powerup")
+    }
+    
+    func diminishLife() {
+        let firstMaterial = ballNode.geometry!.firstMaterial!
+        if firstMaterial.emission.intensity > 0 {
+            firstMaterial.emission.intensity -= 0.001
+        } else {
+            //TODO Delegate to reset game
         }
     }
 }

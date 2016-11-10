@@ -42,13 +42,13 @@ final class GameViewController: UIViewController {
     //---------------------------------------------------------------------------------//
     
     func play() {
+        gameCore.state = GameStateType.playing
         gameScene.playGame()
         gameView.isPlaying = true
-        gameCore.state = GameStateType.playing
     }
     func reset() {
-        gameScene.resetGame()
         gameCore.state = GameStateType.tapToPlay
+        gameScene.resetGame()
     }
     func testForGameOver() {
         if gameScene.isBallOut() {
@@ -70,7 +70,7 @@ final class GameViewController: UIViewController {
     
     fileprivate func updateMotionControll() {
         if gameCore.state == GameStateType.playing {
-            motion.getAccelerometerData(0.1) { [weak self] x, y, z in
+            motion.getAccelerometerData { [weak self] x, y, z in
                 guard let s = self else {return}
                 let vector = SCNVector3Make(x * 0.05, 0, (y+0.8) * -0.05)
                 s.motionForce = vector
