@@ -20,6 +20,7 @@ final class Scene {
     let camera: SCNNode!
     let cameraFollowNode: SCNNode
     let lightFollowNode: SCNNode!
+    let trafficNode: SCNNode!
     
     init(view: SCNView) {
         self.view = view
@@ -34,6 +35,7 @@ final class Scene {
         camera.addChildNode(statusBar.rootNode)
         cameraFollowNode = gameScene.rootNode.childNode(withName: "FollowCamera", recursively: true)!
         lightFollowNode = gameScene.rootNode.childNode(withName: "FollowLight", recursively: true)!
+        trafficNode = gameScene.rootNode.childNode(withName: "Traffic", recursively: true)!
     }
 
     
@@ -47,7 +49,7 @@ final class Scene {
     
     private func sceneTransition(fromScene: SCNScene, toScene: SCNScene) {
         fromScene.isPaused = true
-        let transition = SKTransition.push(with: .up, duration: 0.3)//SKTransition.doorsOpenVertical(withDuration: 1)
+        let transition = SKTransition.push(with: .up, duration: 0.7)//SKTransition.doorsOpenVertical(withDuration: 1)
         view.present(toScene, with: transition, incomingPointOfView: nil) { _ in
             toScene.isPaused = false
         }
