@@ -14,7 +14,12 @@ final class Scene {
     let view: SCNView!
     let gameScene: SCNScene!
     let introScene: SCNScene!
-    let hudNode: HUDNode!
+    let statusBar: StatusBar!
+    
+    let mainCharacterNode: SCNNode!
+    let camera: SCNNode!
+    let cameraFollowNode: SCNNode
+    let lightFollowNode: SCNNode!
     
     init(view: SCNView) {
         self.view = view
@@ -22,7 +27,13 @@ final class Scene {
         introScene = SCNScene(named: "/MrPig.scnassets/IntroScene.scn")
         view.scene = introScene
         
-        hudNode = HUDNode(coinsBanked: 0, coinsCollected: 0)
+        statusBar = StatusBar(coinsBanked: 0, coinsCollected: 0)
+        
+        mainCharacterNode = gameScene.rootNode.childNode(withName: "MrPig", recursively: true)!
+        camera = gameScene.rootNode.childNode(withName: "camera", recursively: true)!
+        camera.addChildNode(statusBar.rootNode)
+        cameraFollowNode = gameScene.rootNode.childNode(withName: "FollowCamera", recursively: true)!
+        lightFollowNode = gameScene.rootNode.childNode(withName: "FollowLight", recursively: true)!
     }
 
     
@@ -36,14 +47,14 @@ final class Scene {
     
     private func sceneTransition(fromScene: SCNScene, toScene: SCNScene) {
         fromScene.isPaused = true
-        let transition = SKTransition.reveal(with: .up, duration: 1)//SKTransition.doorsOpenVertical(withDuration: 1)
+        let transition = SKTransition.push(with: .up, duration: 0.3)//SKTransition.doorsOpenVertical(withDuration: 1)
         view.present(toScene, with: transition, incomingPointOfView: nil) { _ in
             toScene.isPaused = false
         }
     }
 }
 
-final class HUDNode {
+final class StatusBar {
     
     let rootNode: SCNNode!
     let labelNode: SKLabelNode!
