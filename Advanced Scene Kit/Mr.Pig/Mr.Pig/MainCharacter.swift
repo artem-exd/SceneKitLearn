@@ -12,16 +12,21 @@ final class MainCharacter {
     
     let rootNode: SCNNode!
     
-    let jumpLeftAction: SCNAction!
-    let jumRightAction: SCNAction!
-    let jumpForwardAction: SCNAction!
-    let jumpBackwardAction: SCNAction!
+    private(set) var jumpLeftAction: SCNAction!
+    private(set) var jumRightAction: SCNAction!
+    private(set) var jumpForwardAction: SCNAction!
+    private(set) var jumpBackwardAction: SCNAction!
+    private(set) var dieAction: SCNAction!
     private let actionDuration = 0.2
     
-    init(rootNode: SCNNode) {
-        self.rootNode = rootNode
-        
-        //Actions setup
+    typealias DieCompletion = () -> Void
+    
+    init(characterNode: SCNNode) {
+        self.rootNode = characterNode
+        setupMoveActions()
+        setupDieActions()
+    }
+    private func setupMoveActions() {
         let bounceUp = SCNAction.moveBy(x: 0, y: 1.0, z: 0, duration: actionDuration*0.5)
         bounceUp.timingMode = .easeOut
         let bounceDown = SCNAction.moveBy(x: 0, y: -1.0, z: 0, duration: actionDuration*0.5)
@@ -43,6 +48,23 @@ final class MainCharacter {
         jumpForwardAction = SCNAction.group([turnForward, bounceActions, moveForward])
         jumpBackwardAction = SCNAction.group([turnBackward, bounceActions, moveBackward])
     }
+    private func setupDieActions() {
+        let spinAround = SCNAction.rotateBy(x: 0, y: convertToRadians(720), z: 0, duration: actionDuration)
+        let riseUp = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 2)
+        let fadeOut = SCNAction.fadeOpacity(to: 0, duration: 2)
+        let goodBye = SCNAction.group([spinAround, riseUp, fadeOut])
+        let gameOver = SCNAction.run { node in
+            self.rootNode.position = SCNVector3Make(0, 0, 0)
+            self.rootNode.opacity = 1
+        }
+        dieAction = SCNAction.group([goodBye, gameOver])
+    }
+    
+    
+    func die(completion: @escaping DieCompletion) {
+        rootNode.runAction(dieAction, completionHandler: completion)
+    }
+    
     
     func setViewForGestureRecognizers(view: SCNView) {
         func addGesture(direction: UISwipeGestureRecognizerDirection) {
@@ -55,7 +77,6 @@ final class MainCharacter {
         addGesture(direction: .up)
         addGesture(direction: .down)
     }
-    
     @objc private func hanldeGesture(gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:

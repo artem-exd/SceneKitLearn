@@ -44,6 +44,7 @@ final class GameViewController: UIViewController {
     
     func stopGame() {
         gameCore.state = .gameOver
+        scene.gameOver()
     }
     
     func introStart() {

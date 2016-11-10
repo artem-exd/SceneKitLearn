@@ -33,7 +33,7 @@ final class Scene {
         
         statusBar = StatusBar(coinsBanked: 0, coinsCollected: 0)
         
-        mainCharacter = MainCharacter(rootNode: gameScene.rootNode.childNode(withName: "MrPig", recursively: true)!)
+        mainCharacter = MainCharacter(characterNode: gameScene.rootNode.childNode(withName: "MrPig", recursively: true)!)
         mainCharacter.setViewForGestureRecognizers(view: view)
         
         camera = gameScene.rootNode.childNode(withName: "camera", recursively: true)!
@@ -54,6 +54,12 @@ final class Scene {
     
     func introStart() {
         sceneTransition(fromScene: gameScene, toScene: introScene)
+    }
+    
+    func gameOver() {
+        mainCharacter.die { [weak self] in
+            self?.introStart()
+        }
     }
     
     private func sceneTransition(fromScene: SCNScene, toScene: SCNScene) {
