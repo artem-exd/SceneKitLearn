@@ -18,7 +18,6 @@ final class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScenes()
-        setupGestures()
         setupSounds()
         gameCore = GameCore()
         gameCore.state = .tapToPlay
@@ -27,8 +26,6 @@ final class GameViewController: UIViewController {
     func setupScenes() {
         gameView.backgroundColor = .yellow
         scene = Scene(view:gameView)
-    }
-    func setupGestures() {
     }
     func setupSounds() {
     }
@@ -62,8 +59,7 @@ final class GameViewController: UIViewController {
             startGame()
         }
     }
-    
-    
+
     
     
     //MARK: - View Controller behavior

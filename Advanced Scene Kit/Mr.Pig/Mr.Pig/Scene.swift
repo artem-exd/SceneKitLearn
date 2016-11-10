@@ -47,6 +47,9 @@ final class Scene {
     }
 
     
+    //MARK: - Scene States
+    //---------------------------------------------------------------------------------//
+    
     func startGame() {
         sceneTransition(fromScene: introScene, toScene: gameScene)
         startMovingTraffic()
@@ -61,6 +64,8 @@ final class Scene {
             self?.introStart()
         }
     }
+    //---------------------------------------------------------------------------------//
+    
     
     private func sceneTransition(fromScene: SCNScene, toScene: SCNScene) {
         fromScene.isPaused = true
@@ -69,7 +74,6 @@ final class Scene {
             toScene.isPaused = false
         }
     }
-    
     private func startMovingTraffic() {
         trafficNode.childNodes.forEach { car in
             let isBus = car.name == "Bus"
