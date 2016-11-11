@@ -8,9 +8,9 @@
 
 import SceneKit
 
-final class MainCharacter {
+final class MainCharacter: NSObject {
     
-    let rootNode: SCNNode!
+    private(set) var rootNode: SCNNode!
     
     private(set) var jumpLeftAction: SCNAction!
     private(set) var jumRightAction: SCNAction!
@@ -21,10 +21,20 @@ final class MainCharacter {
     
     typealias DieCompletion = () -> Void
     
-    init(characterNode: SCNNode) {
-        self.rootNode = characterNode
+    
+    private(set) var collision: SCNNode!
+    private(set) var leftCollision: SCNNode!
+    private(set) var rightCollision: SCNNode!
+    private(set) var frontCollision: SCNNode!
+    private(set) var backCollison: SCNNode!
+    
+    
+    init(characterNode: SCNNode, collisionNode: SCNNode) {
+        super.init()
+        rootNode = characterNode
         setupMoveActions()
         setupDieActions()
+        setupCollision(rootCollision: collisionNode)
     }
     private func setupMoveActions() {
         let bounceUp = SCNAction.moveBy(x: 0, y: 1.0, z: 0, duration: actionDuration*0.5)
@@ -59,6 +69,19 @@ final class MainCharacter {
         }
         dieAction = SCNAction.group([goodBye, gameOver])
     }
+    private func setupCollision(rootCollision: SCNNode) {
+        collision = rootCollision
+        leftCollision = collision.childNode(withName: "Left", recursively: true)!
+        rightCollision = collision.childNode(withName: "Right", recursively: true)!
+        frontCollision = collision.childNode(withName: "Front", recursively: true)!
+        backCollison = collision.childNode(withName: "Back", recursively: true)!
+        
+        rootNode.physicsBody?.contactTestBitMask = BitMaskCoin | BitMaskVehicle | BitMaskHouse
+        leftCollision.physicsBody?.contactTestBitMask = BitMaskObstacle
+        rightCollision.physicsBody?.contactTestBitMask = BitMaskObstacle
+        frontCollision.physicsBody?.contactTestBitMask = BitMaskObstacle
+        backCollison.physicsBody?.contactTestBitMask = BitMaskObstacle
+    }
     
     
     func die(completion: @escaping DieCompletion) {
@@ -77,6 +100,12 @@ final class MainCharacter {
         addGesture(direction: .up)
         addGesture(direction: .down)
     }
+    
+    func updatePosition() {
+        collision.position = rootNode.presentation.position
+    }
+    
+    
     @objc private func hanldeGesture(gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:

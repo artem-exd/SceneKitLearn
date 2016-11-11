@@ -24,8 +24,10 @@ final class GameViewController: UIViewController {
     }
     
     func setupScenes() {
+        gameView.delegate = self
         gameView.backgroundColor = .yellow
         scene = Scene(view:gameView)
+        scene.gameScene.physicsWorld.contactDelegate = self
     }
     func setupSounds() {
     }
@@ -72,6 +74,30 @@ final class GameViewController: UIViewController {
     }
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+
+extension GameViewController: SCNSceneRendererDelegate, SCNPhysicsContactDelegate {
+    
+    //MARK: - SCNSceneRendererDelegate
+    //---------------------------------------------------------------------------------//
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if gameCore.isPlayingState() {
+            scene.redraw()
+            scene.statusBar.update(coinsBanked: gameCore.coins.banked, coinsCollected: gameCore.coins.collected)
+        }
+    }
+    
+    
+    //MARK: - SCNPhysicsContactDelegate
+    //---------------------------------------------------------------------------------//
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        debugPrint(contact)
+    }
+    
+    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
+        debugPrint(contact)
     }
 }
 

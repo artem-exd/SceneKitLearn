@@ -33,7 +33,9 @@ final class Scene {
         
         statusBar = StatusBar(coinsBanked: 0, coinsCollected: 0)
         
-        mainCharacter = MainCharacter(characterNode: gameScene.rootNode.childNode(withName: "MrPig", recursively: true)!)
+        let mrPig = gameScene.rootNode.childNode(withName: "MrPig", recursively: true)!
+        let mrPigCollision = gameScene.rootNode.childNode(withName: "Collision", recursively: true)!
+        mainCharacter = MainCharacter(characterNode: mrPig, collisionNode: mrPigCollision)
         mainCharacter.setViewForGestureRecognizers(view: view)
         
         camera = gameScene.rootNode.childNode(withName: "camera", recursively: true)!
@@ -64,7 +66,27 @@ final class Scene {
             self?.introStart()
         }
     }
+    
+    
+    //MARK: - Redraw
     //---------------------------------------------------------------------------------//
+    func redraw() {
+        updateCamera()
+        updateLights()
+        mainCharacter.updatePosition()
+    }
+    
+    private func updateCamera() {
+        let camX = (mainCharacter.rootNode.position.x - cameraFollowNode.position.x) * 1.0
+        let camY = (mainCharacter.rootNode.position.y - cameraFollowNode.position.y) * 0.1
+        let camZ = (mainCharacter.rootNode.position.z - cameraFollowNode.position.z) * 1.0
+        cameraFollowNode.position.x += camX
+        cameraFollowNode.position.z += camZ
+        cameraFollowNode.position.y += camY
+    }
+    private func updateLights() {
+        lightFollowNode.position = cameraFollowNode.position
+    }
     
     
     private func sceneTransition(fromScene: SCNScene, toScene: SCNScene) {

@@ -16,7 +16,17 @@ enum GameState {
 
 typealias Coins = (banked: Int, collected: Int)
 
-final class GameCore {
+let BitMaskPig = 1
+let BitMaskVehicle = 2
+let BitMaskObstacle = 4
+let BitMaskPigFront = 8
+let BitMaskPigBack = 16
+let BitMaskPigLeft = 32
+let BitMaskPigRight = 64
+let BitMaskCoin = 128
+let BitMaskHouse = 256
+
+final class GameCore: NSObject {
     
     var state: GameState {
         didSet {
@@ -30,14 +40,19 @@ final class GameCore {
     }
     var coins: Coins
     
-    init() {
+    override init() {
         state = .tapToPlay
         coins.banked = 0
         coins.collected = 0
+        super.init()
     }
     
     func isTapToPlayState() -> Bool {
         return state == .tapToPlay
+    }
+    
+    func isPlayingState() -> Bool {
+        return state == .playing
     }
     
     func collectCoin() {

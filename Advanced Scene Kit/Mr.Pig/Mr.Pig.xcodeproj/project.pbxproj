@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AD70E3CAC7561D139ECAC3B /* Pods_Mr_Pig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr_Pig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0D88921DD4917A00C68664 /* Mr.Pig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mr.Pig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0D88951DD4917A00C68664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC0D88971DD4917A00C68664 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 			children = (
 				AC0D88941DD4917A00C68664 /* Mr.Pig */,
 				AC0D88931DD4917A00C68664 /* Products */,
+				F75AA3D0AE72E357215DA0C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +101,14 @@
 				AC0D88A11DD4917A00C68664 /* Info.plist */,
 			);
 			name = resorces;
+			sourceTree = "<group>";
+		};
+		F75AA3D0AE72E357215DA0C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AD70E3CAC7561D139ECAC3B /* Pods_Mr_Pig.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +237,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -277,6 +288,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
