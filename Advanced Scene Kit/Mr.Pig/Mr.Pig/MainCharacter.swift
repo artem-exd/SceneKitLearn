@@ -28,6 +28,11 @@ final class MainCharacter: NSObject {
     private(set) var frontCollision: SCNNode!
     private(set) var backCollison: SCNNode!
     
+    private(set) var isHaveLeftObstacle = false
+    private(set) var isHaveRightObstacle = false
+    private(set) var isHaveFrontObstacle = false
+    private(set) var isHaveBackObstacle = false
+    
     
     init(characterNode: SCNNode, collisionNode: SCNNode) {
         super.init()
@@ -105,17 +110,43 @@ final class MainCharacter: NSObject {
         collision.position = rootNode.presentation.position
     }
     
+    func stopMovingInDirectionOfContact(contact: SCNPhysicsContact) {
+        func obstacle(mask: Int) -> Bool {
+            return (contact.nodeA.physicsBody?.categoryBitMask == mask) || (contact.nodeB.physicsBody?.categoryBitMask == mask)
+        }
+        isHaveLeftObstacle = obstacle(mask: BitMaskPigLeft)
+        isHaveRightObstacle = obstacle(mask: BitMaskPigRight)
+        isHaveFrontObstacle = obstacle(mask: BitMaskPigFront)
+        isHaveBackObstacle = obstacle(mask: BitMaskPigBack)
+    }
+    
+    func unstopMovingInDirectionOfContact(contact: SCNPhysicsContact) {
+        isHaveLeftObstacle = false
+        isHaveRightObstacle = false
+        isHaveFrontObstacle = false
+        isHaveBackObstacle = false
+    }
+    
+    
     
     @objc private func hanldeGesture(gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:
-            rootNode.runAction(jumpLeftAction)
+            if !isHaveLeftObstacle {
+                rootNode.runAction(jumpLeftAction)
+            }
         case UISwipeGestureRecognizerDirection.right:
-            rootNode.runAction(jumRightAction)
+            if !isHaveRightObstacle {
+                rootNode.runAction(jumRightAction)
+            }
         case UISwipeGestureRecognizerDirection.up:
-            rootNode.runAction(jumpForwardAction)
+            if !isHaveFrontObstacle {
+                rootNode.runAction(jumpForwardAction)
+            }
         case UISwipeGestureRecognizerDirection.down:
-            rootNode.runAction(jumpBackwardAction)
+            if !isHaveBackObstacle {
+                rootNode.runAction(jumpBackwardAction)
+            }
         default:
             break
         }

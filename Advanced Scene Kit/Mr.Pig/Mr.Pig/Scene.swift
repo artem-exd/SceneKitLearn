@@ -76,6 +76,18 @@ final class Scene {
         mainCharacter.updatePosition()
     }
     
+    //MARK: - Nodes controll
+    //---------------------------------------------------------------------------------//
+    
+    func coinContactActionFrom(contact: SCNPhysicsContact) {
+        let coin = contact.nodeA.physicsBody!.categoryBitMask == BitMaskCoin ? contact.nodeA : contact.nodeB
+        coin.isHidden = true
+        coin.runAction(SCNAction.waitForDurationThenRunBlock(60, block: { coin in
+            coin.isHidden = false
+        }))
+    }
+    
+    
     private func updateCamera() {
         let camX = (mainCharacter.rootNode.position.x - cameraFollowNode.position.x) * 1.0
         let camY = (mainCharacter.rootNode.position.y - cameraFollowNode.position.y) * 0.1
