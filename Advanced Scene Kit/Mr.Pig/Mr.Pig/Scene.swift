@@ -22,8 +22,8 @@ final class Scene {
     let lightFollowNode: SCNNode!
     let trafficNode: SCNNode!
     
-    let driveLeftAction: SCNAction!
-    let driveRightAction: SCNAction!
+    private let trafficDriveLeftInfinityAction: SCNAction!
+    private let trafficDriveRightInfinityAction: SCNAction!
     
     init(view: SCNView) {
         self.view = view
@@ -44,8 +44,8 @@ final class Scene {
         lightFollowNode = gameScene.rootNode.childNode(withName: "FollowLight", recursively: true)!
         trafficNode = gameScene.rootNode.childNode(withName: "Traffic", recursively: true)!
         
-        driveLeftAction = SCNAction.repeatForever(SCNAction.moveBy(x: -2, y: 0, z: 0, duration: 1))
-        driveRightAction = SCNAction.repeatForever(SCNAction.moveBy(x: 2, y: 0, z: 0, duration: 1))
+        trafficDriveLeftInfinityAction = SCNAction.repeatForever(SCNAction.moveBy(x: -2, y: 0, z: 0, duration: 1))
+        trafficDriveRightInfinityAction = SCNAction.repeatForever(SCNAction.moveBy(x: 2, y: 0, z: 0, duration: 1))
     }
 
     
@@ -124,11 +124,11 @@ final class Scene {
     private func startMovingTraffic() {
         trafficNode.childNodes.forEach { car in
             let isBus = car.name == "Bus"
-            driveLeftAction.speed = isBus ? 1 : 2
-            driveRightAction.speed = isBus ? 1 : 2
+            trafficDriveLeftInfinityAction.speed = isBus ? 1 : 2
+            trafficDriveRightInfinityAction.speed = isBus ? 1 : 2
             
             let isCarRidingLeft = car.eulerAngles.y > 0
-            car.runAction(isCarRidingLeft ? driveLeftAction : driveRightAction)
+            car.runAction(isCarRidingLeft ? trafficDriveLeftInfinityAction : trafficDriveRightInfinityAction)
         }
     }
 }
