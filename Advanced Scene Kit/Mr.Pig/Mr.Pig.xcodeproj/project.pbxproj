@@ -17,6 +17,7 @@
 		AC0D88AF1DD4924500C68664 /* MrPig.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0D88AE1DD4924500C68664 /* MrPig.scnassets */; };
 		AC0D88B21DD492DC00C68664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0D88B11DD492DC00C68664 /* Assets.xcassets */; };
 		AC0D88BA1DD4A4CE00C68664 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D88B91DD4A4CE00C68664 /* Scene.swift */; };
+		AC3DEACD1DD7858D0084B64E /* CarsTraffic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEACC1DD7858D0084B64E /* CarsTraffic.swift */; };
 		AC8E7D151DD51E8B00D69C9F /* MainCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8E7D141DD51E8B00D69C9F /* MainCharacter.swift */; };
 		ACADF3051DD4BF0400CCABA9 /* GameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACADF3041DD4BF0400CCABA9 /* GameCore.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		AC0D88AE1DD4924500C68664 /* MrPig.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = MrPig.scnassets; sourceTree = "<group>"; };
 		AC0D88B11DD492DC00C68664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC0D88B91DD4A4CE00C68664 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		AC3DEACC1DD7858D0084B64E /* CarsTraffic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsTraffic.swift; sourceTree = "<group>"; };
 		AC8E7D141DD51E8B00D69C9F /* MainCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCharacter.swift; sourceTree = "<group>"; };
 		ACADF3041DD4BF0400CCABA9 /* GameCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,19 +77,20 @@
 				AC0D88971DD4917A00C68664 /* GameViewController.swift */,
 				ACADF3041DD4BF0400CCABA9 /* GameCore.swift */,
 				AC0D88B91DD4A4CE00C68664 /* Scene.swift */,
-				AC8E7D141DD51E8B00D69C9F /* MainCharacter.swift */,
-				AC0D88A71DD491EB00C68664 /* GameUtils */,
+				AC3DEACE1DD7868E0084B64E /* Nodes */,
+				AC0D88A71DD491EB00C68664 /* GameUtils Ray Wenderlich Objects */,
 			);
 			path = Mr.Pig;
 			sourceTree = "<group>";
 		};
-		AC0D88A71DD491EB00C68664 /* GameUtils */ = {
+		AC0D88A71DD491EB00C68664 /* GameUtils Ray Wenderlich Objects */ = {
 			isa = PBXGroup;
 			children = (
 				AC0D88A81DD491EB00C68664 /* SoundFX.swift */,
 				AC0D88A91DD491EB00C68664 /* GameUtils.swift */,
 				AC0D88AA1DD491EB00C68664 /* SCNAction+Extensions.swift */,
 			);
+			name = "GameUtils Ray Wenderlich Objects";
 			path = GameUtils;
 			sourceTree = "<group>";
 		};
@@ -101,6 +104,15 @@
 				AC0D88A11DD4917A00C68664 /* Info.plist */,
 			);
 			name = resorces;
+			sourceTree = "<group>";
+		};
+		AC3DEACE1DD7868E0084B64E /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				AC3DEACC1DD7858D0084B64E /* CarsTraffic.swift */,
+				AC8E7D141DD51E8B00D69C9F /* MainCharacter.swift */,
+			);
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 		F75AA3D0AE72E357215DA0C6 /* Frameworks */ = {
@@ -187,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8E7D151DD51E8B00D69C9F /* MainCharacter.swift in Sources */,
+				AC3DEACD1DD7858D0084B64E /* CarsTraffic.swift in Sources */,
 				AC0D88981DD4917A00C68664 /* GameViewController.swift in Sources */,
 				AC0D88AD1DD491EB00C68664 /* SCNAction+Extensions.swift in Sources */,
 				AC0D88BA1DD4A4CE00C68664 /* Scene.swift in Sources */,

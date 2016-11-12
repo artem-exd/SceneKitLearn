@@ -20,10 +20,7 @@ final class Scene {
     let camera: SCNNode!
     let cameraFollowNode: SCNNode
     let lightFollowNode: SCNNode!
-    let trafficNode: SCNNode!
-    
-    private let trafficDriveLeftInfinityAction: SCNAction!
-    private let trafficDriveRightInfinityAction: SCNAction!
+    let carsTraffic: CarsTraffic!
     
     init(view: SCNView) {
         self.view = view
@@ -42,10 +39,7 @@ final class Scene {
         camera.addChildNode(statusBar.rootNode)
         cameraFollowNode = gameScene.rootNode.childNode(withName: "FollowCamera", recursively: true)!
         lightFollowNode = gameScene.rootNode.childNode(withName: "FollowLight", recursively: true)!
-        trafficNode = gameScene.rootNode.childNode(withName: "Traffic", recursively: true)!
-        
-        trafficDriveLeftInfinityAction = SCNAction.repeatForever(SCNAction.moveBy(x: -2, y: 0, z: 0, duration: 1))
-        trafficDriveRightInfinityAction = SCNAction.repeatForever(SCNAction.moveBy(x: 2, y: 0, z: 0, duration: 1))
+        carsTraffic = CarsTraffic(rootNode: gameScene.rootNode.childNode(withName: "Traffic", recursively: true)!)
     }
 
     
@@ -54,7 +48,7 @@ final class Scene {
     
     func startGame() {
         sceneTransition(fromScene: introScene, toScene: gameScene)
-        startMovingTraffic()
+        carsTraffic.startMovingTraffic()
     }
     
     func introStart() {
@@ -74,7 +68,7 @@ final class Scene {
         updateCamera()
         updateLights()
         mainCharacter.updatePosition()
-        updateTraffic()
+        carsTraffic.updateTraffic()
     }
     
     //MARK: - Nodes controll
@@ -86,18 +80,6 @@ final class Scene {
         coin.runAction(SCNAction.waitForDurationThenRunBlock(60, block: { coin in
             coin.isHidden = false
         }))
-    }
-    
-    private func updateTraffic() {
-        trafficNode.childNodes.forEach { car in
-            let leftTrafficCarIsOut = car.position.x > 25
-            let rightTrafficCarIsOut = car.position.x < -25
-            if leftTrafficCarIsOut {
-                car.position.x = -25
-            } else if rightTrafficCarIsOut {
-                car.position.x = 25
-            }
-        }
     }
     
     
@@ -119,16 +101,6 @@ final class Scene {
         let transition = SKTransition.push(with: .down, duration: 1)
         view.present(toScene, with: transition, incomingPointOfView: nil) { _ in
             toScene.isPaused = false
-        }
-    }
-    private func startMovingTraffic() {
-        trafficNode.childNodes.forEach { car in
-            let isBus = car.name == "Bus"
-            trafficDriveLeftInfinityAction.speed = isBus ? 1 : 2
-            trafficDriveRightInfinityAction.speed = isBus ? 1 : 2
-            
-            let isCarRidingLeft = car.eulerAngles.y > 0
-            car.runAction(isCarRidingLeft ? trafficDriveLeftInfinityAction : trafficDriveRightInfinityAction)
         }
     }
 }
