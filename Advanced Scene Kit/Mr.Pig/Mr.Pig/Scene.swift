@@ -49,6 +49,7 @@ final class Scene {
     func startGame() {
         sceneTransition(fromScene: introScene, toScene: gameScene)
         carsTraffic.startMovingTraffic()
+        mainCharacter.placedInStartPosition()
     }
     
     func introStart() {

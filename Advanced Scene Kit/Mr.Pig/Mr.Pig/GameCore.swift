@@ -59,15 +59,12 @@ final class GameCore: NSObject {
         coins.collected += 1
     }
     
-    func bankCoins() -> Bool {
+    func bankCoins()  {
         coins.banked += coins.collected
         
         if coins.collected > 0 {
             coins.collected = 0
-            return true
         }
-        
-        return false
     }
     
     func reset() {

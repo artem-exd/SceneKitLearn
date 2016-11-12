@@ -94,36 +94,28 @@ extension GameViewController: SCNSceneRendererDelegate, SCNPhysicsContactDelegat
     //MARK: - SCNPhysicsContactDelegate
     //---------------------------------------------------------------------------------//
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        if isCoinContated(contact: contact) {
+        if contact.isCoinContated {
             gameCore.collectCoin()
             scene.coinContactActionFrom(contact: contact)
         }
         
-        if isVehicleContacted(contact: contact) {
+        if contact.isVehicleContacted {
             stopGame()
         }
         
-        if isObstacleContacted(contact: contact) {
+        if contact.isObstacleContacted {
             scene.mainCharacter.stopMovingInDirectionOfContact(contact: contact)
+        }
+        
+        if contact.isHouseContacted {
+            gameCore.bankCoins()
         }
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-        if isObstacleContacted(contact: contact) {
+        if contact.isObstacleContacted {
             scene.mainCharacter.unstopMovingInDirectionOfContact(contact: contact)
         }
-    }
-    
-    private func isCoinContated(contact: SCNPhysicsContact) -> Bool {
-        return (contact.nodeA.physicsBody!.categoryBitMask == BitMaskCoin) || (contact.nodeB.physicsBody!.categoryBitMask == BitMaskCoin)
-    }
-    
-    private func isVehicleContacted(contact: SCNPhysicsContact) -> Bool {
-        return (contact.nodeA.physicsBody!.categoryBitMask == BitMaskVehicle) || (contact.nodeB.physicsBody!.categoryBitMask == BitMaskVehicle)
-    }
-    
-    private func isObstacleContacted(contact: SCNPhysicsContact) -> Bool {
-        return (contact.nodeA.physicsBody!.categoryBitMask == BitMaskObstacle) || (contact.nodeB.physicsBody!.categoryBitMask == BitMaskObstacle)
     }
 }
 

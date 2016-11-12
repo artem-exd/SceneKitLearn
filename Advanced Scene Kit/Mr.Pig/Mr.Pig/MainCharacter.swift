@@ -93,6 +93,11 @@ final class MainCharacter: NSObject {
         rootNode.runAction(dieAction, completionHandler: completion)
     }
     
+    func placedInStartPosition() {
+        rootNode.position = SCNVector3Zero
+        rootNode.opacity = 1
+    }
+    
     
     func setViewForGestureRecognizers(view: SCNView) {
         func addGesture(direction: UISwipeGestureRecognizerDirection) {

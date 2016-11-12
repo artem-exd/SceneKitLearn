@@ -18,6 +18,7 @@
 		AC0D88B21DD492DC00C68664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0D88B11DD492DC00C68664 /* Assets.xcassets */; };
 		AC0D88BA1DD4A4CE00C68664 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D88B91DD4A4CE00C68664 /* Scene.swift */; };
 		AC3DEACD1DD7858D0084B64E /* CarsTraffic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEACC1DD7858D0084B64E /* CarsTraffic.swift */; };
+		AC3DEAD01DD789720084B64E /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEACF1DD789720084B64E /* Extentions.swift */; };
 		AC8E7D151DD51E8B00D69C9F /* MainCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8E7D141DD51E8B00D69C9F /* MainCharacter.swift */; };
 		ACADF3051DD4BF0400CCABA9 /* GameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACADF3041DD4BF0400CCABA9 /* GameCore.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		AC0D88B11DD492DC00C68664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC0D88B91DD4A4CE00C68664 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		AC3DEACC1DD7858D0084B64E /* CarsTraffic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsTraffic.swift; sourceTree = "<group>"; };
+		AC3DEACF1DD789720084B64E /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		AC8E7D141DD51E8B00D69C9F /* MainCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCharacter.swift; sourceTree = "<group>"; };
 		ACADF3041DD4BF0400CCABA9 /* GameCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 				AC0D88971DD4917A00C68664 /* GameViewController.swift */,
 				ACADF3041DD4BF0400CCABA9 /* GameCore.swift */,
 				AC0D88B91DD4A4CE00C68664 /* Scene.swift */,
+				AC3DEACF1DD789720084B64E /* Extentions.swift */,
 				AC3DEACE1DD7868E0084B64E /* Nodes */,
 				AC0D88A71DD491EB00C68664 /* GameUtils Ray Wenderlich Objects */,
 			);
@@ -200,6 +203,7 @@
 			files = (
 				AC8E7D151DD51E8B00D69C9F /* MainCharacter.swift in Sources */,
 				AC3DEACD1DD7858D0084B64E /* CarsTraffic.swift in Sources */,
+				AC3DEAD01DD789720084B64E /* Extentions.swift in Sources */,
 				AC0D88981DD4917A00C68664 /* GameViewController.swift in Sources */,
 				AC0D88AD1DD491EB00C68664 /* SCNAction+Extensions.swift in Sources */,
 				AC0D88BA1DD4A4CE00C68664 /* Scene.swift in Sources */,
