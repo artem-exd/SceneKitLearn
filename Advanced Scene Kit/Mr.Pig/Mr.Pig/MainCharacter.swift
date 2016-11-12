@@ -67,12 +67,7 @@ final class MainCharacter: NSObject {
         let spinAround = SCNAction.rotateBy(x: 0, y: convertToRadians(720), z: 0, duration: actionDuration)
         let riseUp = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 2)
         let fadeOut = SCNAction.fadeOpacity(to: 0, duration: 2)
-        let goodBye = SCNAction.group([spinAround, riseUp, fadeOut])
-        let gameOver = SCNAction.run { node in
-            self.rootNode.position = SCNVector3Make(0, 0, 0)
-            self.rootNode.opacity = 1
-        }
-        dieAction = SCNAction.group([goodBye, gameOver])
+        dieAction = SCNAction.group([spinAround, riseUp, fadeOut])
     }
     private func setupCollision(rootCollision: SCNNode) {
         collision = rootCollision
@@ -93,7 +88,7 @@ final class MainCharacter: NSObject {
         rootNode.runAction(dieAction, completionHandler: completion)
     }
     
-    func placedInStartPosition() {
+    func placeInStartPosition() {
         rootNode.position = SCNVector3Zero
         rootNode.opacity = 1
     }

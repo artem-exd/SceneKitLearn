@@ -24,8 +24,8 @@ final class CarsTraffic {
     func startMovingTraffic() {
         rootNode.childNodes.forEach { car in
             let isBus = car.name == "Bus"
-            trafficDriveLeftInfinityAction.speed = isBus ? 1 : 2
-            trafficDriveRightInfinityAction.speed = isBus ? 1 : 2
+            trafficDriveLeftInfinityAction.speed = isBus ? 0.5 : 1
+            trafficDriveRightInfinityAction.speed = isBus ? 0.5 : 1
             
             let isCarRidingLeft = car.eulerAngles.y > 0
             car.runAction(isCarRidingLeft ? trafficDriveLeftInfinityAction : trafficDriveRightInfinityAction)
