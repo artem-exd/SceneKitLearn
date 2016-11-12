@@ -74,6 +74,7 @@ final class Scene {
         updateCamera()
         updateLights()
         mainCharacter.updatePosition()
+        updateTraffic()
     }
     
     //MARK: - Nodes controll
@@ -85,6 +86,18 @@ final class Scene {
         coin.runAction(SCNAction.waitForDurationThenRunBlock(60, block: { coin in
             coin.isHidden = false
         }))
+    }
+    
+    private func updateTraffic() {
+        trafficNode.childNodes.forEach { car in
+            let leftTrafficCarIsOut = car.position.x > 25
+            let rightTrafficCarIsOut = car.position.x < -25
+            if leftTrafficCarIsOut {
+                car.position.x = -25
+            } else if rightTrafficCarIsOut {
+                car.position.x = 25
+            }
+        }
     }
     
     
